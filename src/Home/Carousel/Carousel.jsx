@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Link } from "lucide-react";
 
 const Carousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -57,12 +57,25 @@ const Carousel = ({ items }) => {
               className="relative z-10 w-full h-full object-contain"
               loading="eager"
             />
-            <div className="absolute inset-0 bg-black/40 w-full h-full top-0">
-              <h1>hello</h1>
+            <div className="absolute inset-0 bg-black/40 w-full h-full top-0 flex items-end justify-start z-50 md:px-[5%] mb:pb-[4%] px-[10%] pb-[4%]">
+              <div>
+                <h1 className="text-white font-bold md:text-2xl text-xl md:line-clamp-none line-clamp-3">
+                  {item?.title}
+                </h1>
+                {item?.description && (
+                  <div className="flex flex-wrap border">
+                    <p className="text-gray-400 text-sm line-clamp-1">
+                      {item?.description}
+                    </p>
+                    <button className="underline hover:cursor-pointer z-50">
+                      <span>see more</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))}
-        <div className="absolute inset-0 bg-black/40 w-full h-full"></div>
       </div>
     </div>
   );
